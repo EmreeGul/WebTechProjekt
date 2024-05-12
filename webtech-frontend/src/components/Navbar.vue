@@ -1,6 +1,16 @@
 <script>
 export default {
-  name: 'Navbar'
+  name: 'Navbar',
+  data() {
+    return {
+      navLinks: [
+        { name: 'Home', path: '/' },
+        { name: 'Favourites', path: '/favourites' },
+        { name: 'Spiele', path: '/spiele' }
+      ]
+    }
+
+  }
 }
 </script>
 
@@ -13,9 +23,7 @@ export default {
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <router-link class="nav-link" to="/">Home</router-link>
-          <router-link class="nav-link" to="spiele">Spiele</router-link>
-          <router-link class="nav-link" to="favourites">Favourites</router-link>
+          <router-link class="nav-link" v-for="(link, index) in navLinks" :key="index" :to="link.path">{{ link.name }}</router-link>
 
         </div>
       </div>
